@@ -1,0 +1,9 @@
+{
+    "env":{
+        "DB_USER":"Shiva",
+        "DB_PASSWORD":"N89hLM3DlsWKXkUj",
+        "DB_NAME":"places",
+        "LOCATOR_API_KEY":"b0409ea54bccc9f28368a5fd41a471dd",
+        "JWT_KEY":"shivaisamernstackdeveloper"
+    }
+}
