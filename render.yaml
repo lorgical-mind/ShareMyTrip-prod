@@ -1,0 +1,15 @@
+services:
+  - name: node-app
+    env:
+      - key: DB_USER
+        value: shiva-prod 
+      - key: DB_PASSWORD
+        value: shiva-prod456mern
+      - key: DB_USER
+        value: shiva-prod
+      - key: LOCATOR_API_KEY
+        value: b0409ea54bccc9f28368a5fd41a471dd
+      - key: JWT_KEY
+        value: shivaisamernstackdeveloper
+    buildCommand: npm ci
+    startCommand: node app.js
