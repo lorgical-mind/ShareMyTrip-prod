@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const HttpError = require('../models/http-error');
 const getCoordsForAddress = require('../util/location');
 const Place = require('../models/place');
-const Users = require('../Models/user');
+const Users = require('../models/user');
 
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
