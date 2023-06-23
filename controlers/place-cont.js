@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const HttpError = require('../models/http-error');
 const getCoordsForAddress = require('../util/location');
 const Place = require('../models/place');
-const User = require('../Models/user');
+const Users = require('../Models/user');
 
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
@@ -38,7 +38,7 @@ const getPlacesByUserId = async (req, res, next) => {
   // let places;
   let userWithPlaces;
   try {
-    userWithPlaces = await User.findById(userId).populate('places');
+    userWithPlaces = await Users.findById(userId).populate('places');
   } catch (err) {
     const error = new HttpError(
       'Fetching places failed, please try again later',
@@ -50,7 +50,7 @@ const getPlacesByUserId = async (req, res, next) => {
   // if (!places || places.length === 0) {
   if (!userWithPlaces || userWithPlaces.places.length === 0) {
     return next(
-      new HttpError('Could not find places for the provided user id.', 404)
+      new HttpError('Could not find places for the provided Users id.', 404)
     );
   }
 
@@ -87,27 +87,27 @@ const createPlace = async (req, res, next) => {
     creator:req.userData.userId
   });
 
-  let user;
+  let Users;
   try {
-    user = await User.findById(req.userData.userId);
+    Users = await Users.findById(req.userData.userId);
   } catch (err) {
     const error = new HttpError('Creating place failed, please try again', 500);
     return next(error);
   }
 
-  if (!user) {
-    const error = new HttpError('Could not find user for provided id', 404);
+  if (!Users) {
+    const error = new HttpError('Could not find Users for provided id', 404);
     return next(error);
   }
 
-  console.log(user);
+  console.log(Users);
 
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
     await createdPlace.save({ session: sess });
-    user.places.push(createdPlace);
-    await user.save({ session: sess });
+    Users.places.push(createdPlace);
+    await Users.save({ session: sess });
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
