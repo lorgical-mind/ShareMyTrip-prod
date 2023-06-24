@@ -13,7 +13,7 @@ const getPlaceById = async (req, res, next) => {
 
   let place;
   try {
-    place = await Place.findById(placeId);
+    place = await Places.findById(placeId);
   } catch (err) {
     const error = new HttpError(
       'Something went wrong, could not find a place.',
@@ -134,7 +134,7 @@ const updatePlace = async (req, res, next) => {
 
   let place;
   try {
-    place = await Place.findById(placeId);
+    place = await Places.findById(placeId);
   } catch (err) {
     const error = new HttpError(
       'Something went wrong, could not update place.',
@@ -172,7 +172,7 @@ const deletePlace = async (req, res, next) => {
 
   let place;
   try {
-    place = await Place.findById(placeId).populate('creator');
+    place = await Places.findById(placeId).populate('creator');
   } catch (err) {
     const error = new HttpError(
       'Something went wrong, could not delete place.',
