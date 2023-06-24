@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const HttpError = require('../models/http-error');
 const getCoordsForAddress = require('../util/location');
-const Place = require('../models/place');
+const Places = require('../models/place');
 
 const Users = require('../models/user');
 
@@ -79,7 +79,7 @@ const createPlace = async (req, res, next) => {
     return next(error);
   }
 
-  const createdPlace = new Place({
+  const createdPlace = new Places({
     title,
     description,
     address,
