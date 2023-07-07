@@ -3,7 +3,7 @@ const filesystem = require("fs");
 const mongoose = require('mongoose');
 
 const HttpError = require('../models/http-error');
-const getCoordsForAddress = require('../util/location');
+const getCoordsForAddress = require('../util/location');  
 const Places = require('../models/place');
 
 const Users = require('../models/user');
