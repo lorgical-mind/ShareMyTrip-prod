@@ -79,7 +79,7 @@ const createPlace = async (req, res, next) => {
     return next(error);
   }
 
-  const createdPlace = new Place({
+  const createdPlace = new Places({
     title,
     description,
     image:req.file.path,
