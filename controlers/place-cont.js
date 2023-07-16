@@ -96,7 +96,7 @@ const createPlace = async (req, res, next) => {
     return next(err);
   }
 
-  if (!Users) {
+  if (!user) {
     const error = new HttpError('Could not find Users for provided id', 404);
     return next(error);
   }
@@ -107,7 +107,7 @@ const createPlace = async (req, res, next) => {
     const sess = await mongoose.startSession();
     sess.startTransaction();
     await createdPlace.save({ session: sess });
-    Users.places.push(createdPlace);
+    user.places.push(createdPlace);
     await Users.save({ session: sess });
     await sess.commitTransaction();
   } catch (err) {
