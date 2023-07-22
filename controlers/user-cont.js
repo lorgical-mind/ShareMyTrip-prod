@@ -67,7 +67,7 @@ const signup= async (req,res,next)=>{
         const error = new HttpError("signing up failed, please try later",500)
         return next(error)
     }
-    res.status(201).json({userId:User.userId,email:User.email,token:token})
+    res.status(201).json({userId:User.id,email:User.email,token:token})
 }
 
 const login= async(req,res,next)=>{
