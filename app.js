@@ -56,7 +56,7 @@ useUnifiedTopology: true
 app.listen(PORT , ()=>{
   console.log(`your app is running on port ${PORT}`)
 });
-console.log("app is running on port 5000")
+console.log(`your app is running on port ${PORT}`)
 })
 .catch((err)=>{
     console.log(err);
