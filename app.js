@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use("/uploads/photos",express.static(path.join('uploads','photos')));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://sharemytrip-20023.web.app/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://sharemytrip-20023.web.app');
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept, Authorization'
