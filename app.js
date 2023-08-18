@@ -11,10 +11,6 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json())
-
-app.use("/uploads/photos",express.static(path.join('uploads','photos')));
-
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://sharemytrip-90c79.web.app');
   res.setHeader(
@@ -25,6 +21,10 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.use(bodyParser.json())
+
+app.use("/uploads/photos",express.static(path.join('uploads','photos')));
 
 app.use("/api/places",routes)
 app.use("/api/users",UserRoutes)
