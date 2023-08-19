@@ -13,9 +13,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: 'https://example.com',
+  origin: '*',
   methods: 'GET,POST,PATCH,DELETE',
-  credentials: true,
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // Specific headers allowed
   exposedHeaders: 'Authorization'
 };
