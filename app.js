@@ -3,7 +3,6 @@ const express =  require("express");
 const bodyParser = require("body-parser");
 const HttpError = require("./models/http-error")  
 const mongoose = require("mongoose");
-const cors = require('cors');
 
 const routes = require("./routes/places-routes")
 const UserRoutes = require("./routes/users-routes");
@@ -12,17 +11,20 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: '*',
-  methods: 'GET,POST,PATCH,DELETE',
-  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // Specific headers allowed
-  exposedHeaders: 'Authorization'
-};
 
-app.use(cors(corsOptions));
 app.use(bodyParser.json())
 
 app.use("/uploads/photos",express.static(path.join('uploads','photos')));
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+
+  next();
+});
 
 app.use("/api/places",routes)
 app.use("/api/users",UserRoutes)
