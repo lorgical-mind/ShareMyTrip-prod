@@ -1,5 +1,5 @@
 {
-    "env":{
+    "envVars":{
         "DB_USER":"Shiva",
         "DB_PASSWORD":"N89hLM3DlsWKXkUj",
         "DB_NAME":"places",
