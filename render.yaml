@@ -1,9 +1,12 @@
 services:
   - type: web
     name: node-app
+    runtime: node
+    plan: free        # or starter / standard depending on your plan
+    region: singapore    # optional; can be oregon, frankfurt, singapore, etc.
     envVars:
       - key: DB_USER
-        value: shiva-prod 
+        value: shiva-prod
       - key: DB_PASSWORD
         value: shiva-prod456mern
       - key: LOCATOR_API_KEY
@@ -12,5 +15,3 @@ services:
         value: shivaisamernstackdeveloper
     buildCommand: npm ci
     startCommand: node app.js
-
-
